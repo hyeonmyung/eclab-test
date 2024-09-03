@@ -6,7 +6,14 @@ const Header: FunctionComponent = () => {
   return (
     <HeaderLayout>
       <InnerLayout>
-        <Image src={"/images/logo.png"} width={105} height={20} alt="EC LAB" />{" "}
+        <h1>
+          <Image
+            src={"/images/logo.png"}
+            width={105}
+            height={20}
+            alt="EC LAB"
+          />{" "}
+        </h1>
         <EduCenter>EDU.CENTER</EduCenter>
       </InnerLayout>
     </HeaderLayout>
