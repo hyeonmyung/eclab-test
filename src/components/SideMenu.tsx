@@ -22,7 +22,6 @@ const SideMenu: FunctionComponent<PageProps> = ({ page }) => {
   );
 };
 const SideLayout = styled.div`
-  background-color: #3b3a48;
   width: 300px;
   padding: 18px 40px;
   flex-shrink: 0;
