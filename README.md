@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## EC LAB
 
-## Getting Started
+<p style="text-align: center;">
+<img src="https://github.com/user-attachments/assets/1688df08-9769-4170-9ace-68f591a22b67" alt="EC LAB" />
+</p>
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+react v18
+next v14.2.7
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 개발 커맨드
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 디렉토리 구조
 
-## Learn More
+```
+├── public/
+│   ├── images/                - 에셋 폴더 (이미지, 동영상.. 등)
+├── src/
+│   ├── app/
+│   ├── con/                   - 관리자용 페이지 컴포넌트
+│   ├── stu/                   - 학생용 페이지 컴포넌트
+│   ├── components/            - 전체적인 화면을 구성하는 범용 컴포넌트
+│   ├── types/                 - API 데이터 등의 타입 정의
+│   ├── helpers/               - 헬퍼 함수 (함수단위)
+│   ├── lib/                   - 글로벌 레지스트리 구성
+│   ├── hooks/                 - 커스텀 훅
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 반응형 적용 해상도 (가로 사이즈 기준)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### PC 및 태블릿
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- 1920px ~ 1024px
 
-## Deploy on Vercel
+### 모바일
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 375px ~ 1024px
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 개발 시 참고한 자료
+
+### NextJS에서 styled-components 적용 예시
+
+- https://nextjs.org/docs/app/building-your-application/styling/css-in-js#styled-components
