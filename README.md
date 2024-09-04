@@ -18,6 +18,10 @@ styled-components v6.1.13
 yarn dev
 ```
 
+[http://localhost:3000](http://localhost:3000)
+
+**좌측 메뉴 선택 시 화면 확인 가능**
+
 ## 디렉토리 구조
 
 ```
