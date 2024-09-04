@@ -34,18 +34,20 @@ const ReportLists: FunctionComponent<ReportListProps> = ({
                     </>
                   )}
                 </ItemOrg>
-                {item.ec_db.url !== "" && (
-                  <ItemLink>
-                    <Link href={item.ec_db.url} target="_blank">
-                      <Image
-                        src="/images/icon-link.png"
-                        width={24}
-                        height={24}
-                        alt="링크 바로가기"
-                      />
-                    </Link>
-                  </ItemLink>
-                )}
+                {!isMobile
+                  ? item.ec_db.url !== "" && (
+                      <ItemLink>
+                        <Link href={item.ec_db.url} target="_blank">
+                          <Image
+                            src="/images/icon-link.png"
+                            width={24}
+                            height={24}
+                            alt="링크 바로가기"
+                          />
+                        </Link>
+                      </ItemLink>
+                    )
+                  : null}
               </ItemHeaderContent>
             </ItemHeader>
             <ItemBody>
@@ -84,17 +86,25 @@ const ReportLists: FunctionComponent<ReportListProps> = ({
             </ItemBody>
             <ItemFooter className={isMobile ? `isMobile` : ``}>
               <ButtonContainer>
-                {!item.is_added ? (
-                  <Button color="primary" size="rg">
-                    add to EC List
-                  </Button>
-                ) : (
-                  <Button color="primaryOutline" size="rg" disabled>
-                    already added!
-                  </Button>
-                )}
+                {viewType === "STU" ? (
+                  !item.is_added ? (
+                    <Button color="primary" size="rg">
+                      add to EC List
+                    </Button>
+                  ) : (
+                    <Button color="primaryOutline" size="rg" disabled>
+                      already added!
+                    </Button>
+                  )
+                ) : null}
                 {isMobile ? (
                   <Button color="secondary" size="rg">
+                    <Image
+                      src={"/images/icon-link-white.png"}
+                      width={24}
+                      height={24}
+                      alt=""
+                    />
                     Visit Website
                   </Button>
                 ) : null}
@@ -113,6 +123,9 @@ const ReportItem = styled.li`
   background: #fff;
   padding: 26px 46px;
   position: relative;
+  @media only screen and (max-width: 1024px) {
+    padding: 20px;
+  }
   & + li {
     margin-top: 20px;
   }
@@ -123,7 +136,7 @@ const ItemHeader = styled.div`
 `;
 const ItemHeaderContent = styled.div`
   display: flex;
-  align-items: top;
+  align-items: flex-start;
   gap: 0 10px;
 `;
 const ItemTitle = styled.h3`
@@ -143,6 +156,7 @@ const ItemNum = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   color: #fff;
   font-weight: 700;
   font-size: 20px;
@@ -160,8 +174,15 @@ const TypeDetailItem = styled.li`
   strong {
     font-weight: 700;
   }
+  @media only screen and (max-width: 1024px) {
+    display: block;
+  }
   & + li {
     padding-left: 16px;
+    @media only screen and (max-width: 1024px) {
+      padding-left: 0;
+      margin-top: 20px;
+    }
     &::before {
       content: "";
       display: block;
@@ -180,12 +201,37 @@ const ItemType = styled.div`
   padding-left: 36px;
   background: url("/images/icon-filter.png") no-repeat left center;
   background-size: 20px;
+  @media only screen and (max-width: 1024px) {
+    background: none;
+    padding-left: 0;
+    ${TypeDetailItem} {
+      background: url("/images/icon-filter.png") no-repeat left center;
+      background-size: 20px;
+      padding-left: 24px;
+      &::before {
+        display: none;
+      }
+    }
+  }
 `;
 const ItemNatl = styled.div`
   padding-left: 36px;
   background: url("/images/icon-lib.png") no-repeat left center;
   background-size: 20px;
   margin-top: 18px;
+  @media only screen and (max-width: 1024px) {
+    background: none;
+    padding-left: 0;
+    margin-top: 20px;
+    ${TypeDetailItem} {
+      background: url("/images/icon-lib.png") no-repeat left center;
+      background-size: 20px;
+      padding-left: 24px;
+      &::before {
+        display: none;
+      }
+    }
+  }
 `;
 const OrganizationText = styled(TextBlock)`
   display: block;
@@ -210,9 +256,22 @@ const ItemFooter = styled.div`
   &.isMobile {
     position: static;
   }
+  @media only screen and (max-width: 1280px) {
+    position: static;
+    button {
+      width: 100%;
+    }
+  }
 `;
 const ButtonContainer = styled.div`
   display: flex;
   gap: 0 10px;
+  @media only screen and (max-width: 1280px) {
+    justify-content: flex-end;
+    margin-top: 32px;
+  }
+  @media only screen and (max-width: 1024px) {
+    justify-content: center;
+  }
 `;
 export default ReportLists;

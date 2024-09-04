@@ -175,6 +175,10 @@ const CardHeader = styled.div`
   background: #fff;
   border-radius: 20px;
   padding: 40px;
+  @media only screen and (max-width: 1024px) {
+    padding: 20px;
+    border: 1px solid #e6e9ec;
+  }
 `;
 const CardBody = styled.div`
   margin-top: 40px;
@@ -185,10 +189,21 @@ const TotalWrap = styled.div`
   background: rgba(151, 71, 255, 0.2);
   padding: 20px 55px;
   margin: 16px 0 0 0;
+  @media only screen and (max-width: 1440px) {
+    padding: 20px;
+  }
+  @media only screen and (max-width: 1024px) {
+    background: transparent;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
 `;
 const TotalList = styled.ul`
   display: flex;
   justify-content: space-between;
+  @media only screen and (max-width: 1024px) {
+    display: block;
+  }
 `;
 const TotalItem = styled.li`
   display: grid;
@@ -196,9 +211,24 @@ const TotalItem = styled.li`
   gap: 16px 0;
   align-items: center;
   width: 33.33%;
+  @media only screen and (max-width: 1440px) {
+    grid-template-columns: 70% 1fr;
+  }
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+    gap: 10px 0;
+  }
   & + li {
     border-left: 1px solid #b3b3b3;
     padding: 0 46px;
+    @media only screen and (max-width: 1440px) {
+      padding: 0 24px;
+    }
+    @media only screen and (max-width: 1024px) {
+      border: none;
+      padding: 0;
+      margin-top: 10px;
+    }
   }
 `;
 const TotalSubject = styled.div`
@@ -207,9 +237,21 @@ const TotalSubject = styled.div`
     display: inline-block;
     margin-right: 12px;
   }
+  @media only screen and (max-width: 1024px) {
+    background: rgba(151, 71, 255, 0.2);
+    border-radius: 10px 0 0 10px;
+    padding: 20px 16px;
+    height: 60px;
+  }
 `;
 const TotalNum = styled.div`
   text-align: center;
+  @media only screen and (max-width: 1024px) {
+    background: rgba(151, 71, 255, 0.2);
+    border-radius: 0 10px 10px 0;
+    padding: 20px 16px;
+    height: 60px;
+  }
 `;
 const ReportWrap = styled.div`
   margin-top: 20px;

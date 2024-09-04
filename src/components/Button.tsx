@@ -6,7 +6,7 @@ interface ButtonStyleProps {
   size: "sm" | "rg" | "lg";
   link?: string;
   children: ReactNode;
-  type?: "button" | "link" | "submit";
+  full?: boolean;
   onClick?: () => void;
   disabled?: boolean;
 }
@@ -15,6 +15,7 @@ const Button: FunctionComponent<ButtonStyleProps> = ({
   size,
   onClick,
   disabled,
+  full,
   children,
   ...props
 }) => {
@@ -24,6 +25,7 @@ const Button: FunctionComponent<ButtonStyleProps> = ({
       size={size}
       onClick={onClick}
       disabled={disabled}
+      full={full}
     >
       {children}
     </StyledButton>
@@ -33,10 +35,14 @@ const StyledButton = styled.button<{
   color: string;
   size: string;
   disabled?: boolean;
+  full?: boolean;
 }>`
   border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   ${({ color }) => {
     if (color === `primary`) {
       return `
@@ -87,6 +93,14 @@ const StyledButton = styled.button<{
         min-width: 137px;
         height: 70px;
         font-size: 18px;
+    `;
+    }
+    return ``;
+  }}
+  ${({ full }) => {
+    if (full) {
+      return `
+        width: 100%;
     `;
     }
     return ``;

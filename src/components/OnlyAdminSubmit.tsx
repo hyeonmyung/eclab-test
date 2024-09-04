@@ -97,6 +97,8 @@ const OnlyAdminSubmit: FunctionComponent = () => {
 };
 const ButtonContainer = styled.div`
   margin-top: 24px;
+  display: flex;
+  justify-content: center;
 `;
 const CheckboxItem = styled.div`
   display: inline-flex;
