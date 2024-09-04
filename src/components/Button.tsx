@@ -35,7 +35,8 @@ const StyledButton = styled.button<{
   disabled?: boolean;
 }>`
   border-radius: 10px;
-  font-weight: bold;
+  font-weight: 700;
+  cursor: pointer;
   ${({ color }) => {
     if (color === `primary`) {
       return `
@@ -56,6 +57,10 @@ const StyledButton = styled.button<{
           border: 1px solid #3B3A48;
           background: #3B3A48;
           color: #fff;
+          &[disabled] {
+            opacity: 0.3;
+            cursor: inherit;
+          }
       `;
     }
     if (color === `secondaryOutline`) {
@@ -74,6 +79,14 @@ const StyledButton = styled.button<{
         min-width: 144px;
         height: 45px;
         font-size: 16px;
+    `;
+    }
+    if (size === `lg`) {
+      return `
+        padding: 0 52px;
+        min-width: 137px;
+        height: 70px;
+        font-size: 18px;
     `;
     }
     return ``;
