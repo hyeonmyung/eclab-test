@@ -1,14 +1,17 @@
 import { arrayCommaHelpers } from "@/app/helpers/arrayCommaHelpers";
+import { useIsMobile } from "@/app/hooks/useIsMobile";
 import { StudentDataTypes } from "@/app/types/studentDataTypes";
 import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
+import Button from "./Button";
 
 interface ReportListProps {
   reportLists: StudentDataTypes["ec_report_items"];
 }
 const ReportLists: FunctionComponent<ReportListProps> = ({ reportLists }) => {
+  const isMobile = useIsMobile();
   return (
     <ReportList>
       {reportLists.map((item, index) => {
@@ -23,7 +26,7 @@ const ReportLists: FunctionComponent<ReportListProps> = ({ reportLists }) => {
                 </ItemOrg>
                 {item.ec_db.url !== "" && (
                   <ItemLink>
-                    <Link href={item.ec_db.url}>
+                    <Link href={item.ec_db.url} target="_blank">
                       <Image
                         src="/images/icon-link.png"
                         width={24}
@@ -69,6 +72,24 @@ const ReportLists: FunctionComponent<ReportListProps> = ({ reportLists }) => {
                 </TypeDetailLists>
               </ItemNatl>
             </ItemBody>
+            <ItemFooter className={isMobile ? `isMobile` : ``}>
+              <ButtonContainer>
+                {!item.is_added ? (
+                  <Button color="primary" size="rg">
+                    add to EC List
+                  </Button>
+                ) : (
+                  <Button color="primaryOutline" size="rg" disabled>
+                    already added!
+                  </Button>
+                )}
+                {isMobile ? (
+                  <Button color="secondary" size="rg">
+                    Visit Website
+                  </Button>
+                ) : null}
+              </ButtonContainer>
+            </ItemFooter>
           </ReportItem>
         );
       })}
@@ -81,6 +102,7 @@ const ReportItem = styled.li`
   border: 1px #e6e9ec;
   background: #fff;
   padding: 26px 46px;
+  position: relative;
   & + li {
     margin-top: 20px;
   }
@@ -154,5 +176,17 @@ const ItemNatl = styled.div`
   background: url("/images/icon-lib.png") no-repeat left center;
   background-size: 20px;
   margin-top: 18px;
+`;
+const ItemFooter = styled.div`
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  &.isMobile {
+    position: static;
+  }
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 0 10px;
 `;
 export default ReportLists;

@@ -7,8 +7,9 @@ import { FunctionComponent, useCallback, useEffect, useState } from "react";
 import { StudentDataTypes } from "../types/studentDataTypes";
 
 const StuPage: FunctionComponent = () => {
-  const [studentDataLists, setStudentDataLists] =
-    useState<StudentDataTypes | null>(null);
+  const [studentDataLists, setStudentDataLists] = useState<
+    StudentDataTypes | undefined
+  >(undefined);
 
   const getStudentData = useCallback(async () => {
     await axios.get(`https://edu.eclab.me/api/test`).then((res) => {
