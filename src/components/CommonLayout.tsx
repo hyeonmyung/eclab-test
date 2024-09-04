@@ -42,7 +42,7 @@ const ContentLayout = styled.div`
   }
   @media only screen and (max-width: 1024px) {
     padding: 40px 16px;
-    min-height: calc() (100vh - 55px);
+    min-height: calc(100vh - 55px);
   }
 `;
 const ContentInner = styled.div`

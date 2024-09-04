@@ -27,75 +27,49 @@ const ReportDetailCard: FunctionComponent<PageTypes> = ({
       <>
         <CardHeader>
           <InformationItem>
-            <TextBlock weight="700" size="18px">
-              Title
-            </TextBlock>
-            <TextBlock size="18px">{studentDataLists.title}</TextBlock>
+            <TextBlock weight="700">Title</TextBlock>
+            <TextBlock>{studentDataLists.title}</TextBlock>
             {viewType === "STU" ? (
               <>
-                <TextBlock weight="700" size="18px">
-                  Counselor
-                </TextBlock>
-                <TextBlock size="18px">
-                  {studentDataLists.counselor?.name}
-                </TextBlock>
+                <TextBlock weight="700">Counselor</TextBlock>
+                <TextBlock>{studentDataLists.counselor?.name}</TextBlock>
               </>
             ) : (
               <>
-                <TextBlock weight="700" size="18px">
-                  Student
-                </TextBlock>
-                <TextBlock size="18px">
-                  {studentDataLists.student.name}
-                </TextBlock>
+                <TextBlock weight="700">Student</TextBlock>
+                <TextBlock>{studentDataLists.student.name}</TextBlock>
               </>
             )}
           </InformationItem>
           {viewType === "CON" && (
             <>
               <InformationItem>
-                <TextBlock weight="700" size="18px">
-                  School
-                </TextBlock>
-                <TextBlock size="18px">
+                <TextBlock weight="700">School</TextBlock>
+                <TextBlock>
                   {studentDataLists.student?.profile.school.name}
                 </TextBlock>
-                <TextBlock weight="700" size="18px">
-                  Grade
-                </TextBlock>
-                <TextBlock size="18px">
-                  {studentDataLists.student?.profile.grade}
-                </TextBlock>
+                <TextBlock weight="700">Grade</TextBlock>
+                <TextBlock>{studentDataLists.student?.profile.grade}</TextBlock>
               </InformationItem>
               <InformationItem>
-                <TextBlock weight="700" size="18px">
-                  Counselor
-                </TextBlock>
-                <TextBlock size="18px">
-                  {studentDataLists.counselor?.name}
-                </TextBlock>
-                <TextBlock weight="700" size="18px">
-                  Status
-                </TextBlock>
-                <TextBlock size="18px">
+                <TextBlock weight="700">Counselor</TextBlock>
+                <TextBlock>{studentDataLists.counselor?.name}</TextBlock>
+                <TextBlock weight="700">Status</TextBlock>
+                <TextBlock>
                   {studentDataLists.student.profile.status_type}
                 </TextBlock>
               </InformationItem>
             </>
           )}
           <InformationItem>
-            <TextBlock weight="700" size="18px">
-              Received Date
-            </TextBlock>
-            <TextBlock size="18px">
+            <TextBlock weight="700">Received Date</TextBlock>
+            <TextBlock>
               {dayjs(studentDataLists.send_dt).format("ll")}
             </TextBlock>
             {viewType === "CON" && (
               <>
-                <TextBlock weight="700" size="18px">
-                  Delivered Date
-                </TextBlock>
-                <TextBlock size="18px">
+                <TextBlock weight="700">Delivered Date</TextBlock>
+                <TextBlock>
                   {dayjs(studentDataLists.delivered_dt).format("ll")}
                 </TextBlock>
               </>

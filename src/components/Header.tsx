@@ -1,6 +1,7 @@
 "use client";
 import { useIsMobile } from "@/app/hooks/useIsMobile";
 import Image from "next/image";
+import Link from "next/link";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 const Header: FunctionComponent = () => {
@@ -9,12 +10,14 @@ const Header: FunctionComponent = () => {
     <HeaderLayout>
       <InnerLayout>
         <h1>
-          <Image
-            src={"/images/logo.png"}
-            width={!isMobile ? 105 : 80}
-            height={!isMobile ? 20 : 15}
-            alt="EC LAB"
-          />{" "}
+          <Link href="/">
+            <Image
+              src={"/images/logo.png"}
+              width={!isMobile ? 105 : 80}
+              height={!isMobile ? 20 : 15}
+              alt="EC LAB"
+            />{" "}
+          </Link>
         </h1>
         {!isMobile ? <EduCenter>EDU.CENTER</EduCenter> : null}
       </InnerLayout>
@@ -41,7 +44,7 @@ const InnerLayout = styled.div`
   display: flex;
   align-items: center;
   gap: 0 20px;
-  h1 {
+  a {
     display: flex;
     align-items: center;
   }

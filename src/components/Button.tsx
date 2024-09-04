@@ -85,6 +85,10 @@ const StyledButton = styled.button<{
         min-width: 144px;
         height: 45px;
         font-size: 16px;
+        @media only screen and (max-width: 1024px) {
+          padding: 0;
+          height: 54px;
+        }
     `;
     }
     if (size === `lg`) {

@@ -99,6 +99,16 @@ const ButtonContainer = styled.div`
   margin-top: 24px;
   display: flex;
   justify-content: center;
+  @media only screen and (max-width: 1024px) {
+    width: calc(100% + 32px);
+    position: relative;
+    left: -16px;
+    top: 40px;
+    button {
+      width: 100%;
+      border-radius: 0;
+    }
+  }
 `;
 const CheckboxItem = styled.div`
   display: inline-flex;

@@ -101,8 +101,8 @@ const ReportLists: FunctionComponent<ReportListProps> = ({
                   <Button color="secondary" size="rg">
                     <Image
                       src={"/images/icon-link-white.png"}
-                      width={24}
-                      height={24}
+                      width={20}
+                      height={20}
                       alt=""
                     />
                     Visit Website
@@ -133,6 +133,9 @@ const ReportItem = styled.li`
 const ItemHeader = styled.div`
   padding-bottom: 40px;
   border-bottom: 1px dashed #e6e9ec;
+  @media only screen and (max-width: 1024px) {
+    padding-bottom: 20px;
+  }
 `;
 const ItemHeaderContent = styled.div`
   display: flex;
@@ -146,6 +149,9 @@ const ItemTitle = styled.h3`
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 10px;
+  @media only screen and (max-width: 1024px) {
+    font-size: 16px;
+  }
 `;
 const ItemOrg = styled.p``;
 const ItemNum = styled.span`
