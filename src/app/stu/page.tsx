@@ -26,7 +26,7 @@ const StuPage: FunctionComponent = () => {
   return (
     <CommonLayout page="STU">
       <Title>EC Report Details</Title>
-      <ReportDetailCard studentDataLists={studentDataLists} />
+      <ReportDetailCard studentDataLists={studentDataLists} viewType="STU" />
     </CommonLayout>
   );
 };

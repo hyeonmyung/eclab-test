@@ -4,11 +4,16 @@ import dayjs from "dayjs";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import InformationItem from "./InformationItem";
+import OnlyAdminSubmit from "./OnlyAdminSubmit";
 import ReportLists from "./ReportLists";
 import TextBlock from "./TextBlock";
 
-const ReportDetailCard: FunctionComponent<StudentData> = ({
+interface PageTypes extends StudentData {
+  viewType: string;
+}
+const ReportDetailCard: FunctionComponent<PageTypes> = ({
   studentDataLists,
+  viewType,
 }) => {
   var localizedFormat = require("dayjs/plugin/localizedFormat");
   dayjs.extend(localizedFormat);
@@ -26,13 +31,58 @@ const ReportDetailCard: FunctionComponent<StudentData> = ({
               Title
             </TextBlock>
             <TextBlock size="18px">{studentDataLists.title}</TextBlock>
-            <TextBlock weight="700" size="18px">
-              Counselor
-            </TextBlock>
-            <TextBlock size="18px">
-              {studentDataLists.counselor?.name}
-            </TextBlock>
+            {viewType === "STU" ? (
+              <>
+                <TextBlock weight="700" size="18px">
+                  Counselor
+                </TextBlock>
+                <TextBlock size="18px">
+                  {studentDataLists.counselor?.name}
+                </TextBlock>
+              </>
+            ) : (
+              <>
+                <TextBlock weight="700" size="18px">
+                  Student
+                </TextBlock>
+                <TextBlock size="18px">
+                  {studentDataLists.student.name}
+                </TextBlock>
+              </>
+            )}
           </InformationItem>
+          {viewType === "CON" && (
+            <>
+              <InformationItem>
+                <TextBlock weight="700" size="18px">
+                  School
+                </TextBlock>
+                <TextBlock size="18px">
+                  {studentDataLists.student?.profile.school.name}
+                </TextBlock>
+                <TextBlock weight="700" size="18px">
+                  Grade
+                </TextBlock>
+                <TextBlock size="18px">
+                  {studentDataLists.student?.profile.grade}
+                </TextBlock>
+              </InformationItem>
+              <InformationItem>
+                <TextBlock weight="700" size="18px">
+                  Counselor
+                </TextBlock>
+                <TextBlock size="18px">
+                  {studentDataLists.counselor?.name}
+                </TextBlock>
+                <TextBlock weight="700" size="18px">
+                  Status
+                </TextBlock>
+                <TextBlock size="18px">
+                  {studentDataLists.student.profile.status_type}
+                </TextBlock>
+              </InformationItem>
+            </>
+          )}
           <InformationItem>
             <TextBlock weight="700" size="18px">
               Received Date
@@ -40,6 +90,16 @@ const ReportDetailCard: FunctionComponent<StudentData> = ({
             <TextBlock size="18px">
               {dayjs(studentDataLists.send_dt).format("ll")}
             </TextBlock>
+            {viewType === "CON" && (
+              <>
+                <TextBlock weight="700" size="18px">
+                  Delivered Date
+                </TextBlock>
+                <TextBlock size="18px">
+                  {dayjs(studentDataLists.delivered_dt).format("ll")}
+                </TextBlock>
+              </>
+            )}
           </InformationItem>
         </CardHeader>
         <CardBody>
@@ -96,9 +156,17 @@ const ReportDetailCard: FunctionComponent<StudentData> = ({
             </TotalList>
           </TotalWrap>
           <ReportWrap>
-            <ReportLists reportLists={studentDataLists.ec_report_items} />
+            <ReportLists
+              reportLists={studentDataLists.ec_report_items}
+              viewType={viewType}
+            />
           </ReportWrap>
         </CardBody>
+        {viewType === "CON" ? (
+          <CardFooter>
+            <OnlyAdminSubmit />
+          </CardFooter>
+        ) : null}
       </>
     )
   );
@@ -145,5 +213,9 @@ const TotalNum = styled.div`
 `;
 const ReportWrap = styled.div`
   margin-top: 20px;
+`;
+const CardFooter = styled.div`
+  margin-top: 40px;
+  text-align: center;
 `;
 export default ReportDetailCard;

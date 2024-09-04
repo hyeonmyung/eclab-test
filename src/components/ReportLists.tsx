@@ -6,11 +6,16 @@ import Link from "next/link";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Button from "./Button";
+import TextBlock from "./TextBlock";
 
 interface ReportListProps {
   reportLists: StudentDataTypes["ec_report_items"];
+  viewType: string;
 }
-const ReportLists: FunctionComponent<ReportListProps> = ({ reportLists }) => {
+const ReportLists: FunctionComponent<ReportListProps> = ({
+  reportLists,
+  viewType,
+}) => {
   const isMobile = useIsMobile();
   return (
     <ReportList>
@@ -22,7 +27,12 @@ const ReportLists: FunctionComponent<ReportListProps> = ({ reportLists }) => {
                 <ItemNum>{index + 1}</ItemNum>
                 <ItemOrg>
                   <ItemTitle>{item.ec_db.name}</ItemTitle>
-                  {item.ec_db.organization}
+                  <OrganizationText>{item.ec_db.organization}</OrganizationText>
+                  {viewType === "CON" && (
+                    <>
+                      <YearBadge>{item.ec_db.year}</YearBadge>
+                    </>
+                  )}
                 </ItemOrg>
                 {item.ec_db.url !== "" && (
                   <ItemLink>
@@ -176,6 +186,22 @@ const ItemNatl = styled.div`
   background: url("/images/icon-lib.png") no-repeat left center;
   background-size: 20px;
   margin-top: 18px;
+`;
+const OrganizationText = styled(TextBlock)`
+  display: block;
+`;
+const YearBadge = styled.div`
+  display: inline-flex;
+  align-items: center;
+  height: 23px;
+  padding: 0 10px;
+  border-radius: 12px;
+  background: #6b7280;
+  font-size: 14px;
+  font-weight: 700;
+  justify-content: center;
+  color: #fff;
+  margin-top: 10px;
 `;
 const ItemFooter = styled.div`
   position: absolute;
