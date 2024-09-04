@@ -1,7 +1,8 @@
 export interface StudentData {
-  studentDataLists: StudentDataTypes | null;
+  studentDataLists: StudentDataTypes | undefined;
 }
 export interface StudentDataTypes {
+  filter: any;
   title: string;
   counselor: {
     email: string;

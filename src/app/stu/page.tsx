@@ -21,7 +21,7 @@ const StuPage: FunctionComponent = () => {
   useEffect(() => {
     getStudentData();
   }, [getStudentData]);
-  console.log(studentDataLists);
+
   return (
     <CommonLayout page="STU">
       <Title>EC Report Details</Title>

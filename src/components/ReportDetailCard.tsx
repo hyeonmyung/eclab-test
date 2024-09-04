@@ -1,3 +1,4 @@
+import { typeTotalCheckHelpers } from "@/app/helpers/typeTotalCheckHelpers";
 import { StudentData } from "@/app/types/studentDataTypes";
 import dayjs from "dayjs";
 import { FunctionComponent } from "react";
@@ -11,6 +12,11 @@ const ReportDetailCard: FunctionComponent<StudentData> = ({
 }) => {
   var localizedFormat = require("dayjs/plugin/localizedFormat");
   dayjs.extend(localizedFormat);
+
+  const studentEcDb = studentDataLists?.ec_report_items.map((item) => {
+    return item.ec_db;
+  });
+
   return (
     studentDataLists && (
       <>
@@ -46,31 +52,46 @@ const ReportDetailCard: FunctionComponent<StudentData> = ({
                 <TotalSubject>
                   <span>✍️</span>Writing Competition
                 </TotalSubject>
-                <TotalNum>-</TotalNum>
+                <TotalNum>
+                  {typeTotalCheckHelpers(studentEcDb, "Writing Competitions")}
+                </TotalNum>
                 <TotalSubject>
                   <span>🏆</span>Competition
                 </TotalSubject>
-                <TotalNum>-</TotalNum>
+                <TotalNum>
+                  {typeTotalCheckHelpers(studentEcDb, "Competitions")}
+                </TotalNum>
               </TotalItem>
               <TotalItem>
                 <TotalSubject>
                   <span>🏫</span>Pre-College
                 </TotalSubject>
-                <TotalNum>-</TotalNum>
+                <TotalNum>
+                  {typeTotalCheckHelpers(
+                    studentEcDb,
+                    "Pre-college/Summer Programs"
+                  )}
+                </TotalNum>
                 <TotalSubject>
                   <span>💼</span>Internship
                 </TotalSubject>
-                <TotalNum>-</TotalNum>
+                <TotalNum>
+                  {typeTotalCheckHelpers(studentEcDb, "Internship")}
+                </TotalNum>
               </TotalItem>
               <TotalItem>
                 <TotalSubject>
                   <span>⛑️</span>Volunteering
                 </TotalSubject>
-                <TotalNum>-</TotalNum>
+                <TotalNum>
+                  {typeTotalCheckHelpers(studentEcDb, "Volunteering")}
+                </TotalNum>
                 <TotalSubject>
                   <span>🔎</span>Research
                 </TotalSubject>
-                <TotalNum>-</TotalNum>
+                <TotalNum>
+                  {typeTotalCheckHelpers(studentEcDb, "Research")}
+                </TotalNum>
               </TotalItem>
             </TotalList>
           </TotalWrap>
