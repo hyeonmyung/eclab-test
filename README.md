@@ -7,6 +7,9 @@
 ```
 react v18
 next v14.2.7
+
+react-hook-form v7.53.0
+styled-components v6.1.13
 ```
 
 ## 개발 커맨드
